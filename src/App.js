@@ -4,18 +4,21 @@ import './App.css';
 function App() {
 
   const [data, setData] = useState({})
+  const [loading, setLoading] = useState(false)
 
   useEffect(() => {
 
     fetch(`/.netlify/functions/hello?name=from react to netlify function`)
+    setLoading(true)
       .then(response => response.json())
       .then(apidata => setData(apidata))
+    setLoading(false)
 
   }, [])
 
 
-  if(!data)
-  return <h6 style={{color:"blue"}}>loading...</h6>
+  if (loading)
+    return <h6 style={{ color: "blue" }}>loading...</h6>
 
   return (
     <div className="App">
