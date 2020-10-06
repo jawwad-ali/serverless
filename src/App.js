@@ -13,6 +13,10 @@ function App() {
 
   }, [])
 
+
+  if(!data)
+  return <h6 style={{color:"blue"}}>loading...</h6>
+
   return (
     <div className="App">
       <h4>Hello from Serverless</h4>
